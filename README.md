@@ -154,7 +154,7 @@ REDIS_REQUIRED=false
 
 This repository is a safety-oriented product prototype, not a deployed stadium control system. It has no FIFA or live venue integration, the simulator is not a certified pedestrian model, and all publication actions are simulated. A deterministic fallback result must not be interpreted as a successful live-model call.
 
-Download a source archive from the [latest GitHub release](https://github.com/himanshu051116/croudqueue/releases/latest).
+Download the clean tracked-source archive for [CrowdCue 2.0 (ZIP)](https://github.com/himanshu051116/croudqueue/archive/refs/tags/v2.0.0.zip).
 
 ## Security
 
