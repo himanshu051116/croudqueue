@@ -1,0 +1,89 @@
+{
+  "routes": [
+    {
+      "stable_key": "route-west-gate-a",
+      "waypoints": [
+        "node-plaza-west",
+        "node-corridor-west",
+        "node-gate-a-queue",
+        "node-gate-a",
+        "node-concourse-north"
+      ],
+      "protected": false,
+      "required_assets": []
+    },
+    {
+      "stable_key": "route-west-gate-b",
+      "waypoints": [
+        "node-plaza-west",
+        "node-corridor-west",
+        "node-gate-b-queue",
+        "node-gate-b",
+        "node-concourse-west"
+      ],
+      "protected": false,
+      "required_assets": []
+    },
+    {
+      "stable_key": "route-east-gate-c",
+      "waypoints": [
+        "node-plaza-east",
+        "node-corridor-east",
+        "node-gate-c-queue",
+        "node-gate-c",
+        "node-concourse-east"
+      ],
+      "protected": false,
+      "required_assets": []
+    },
+    {
+      "stable_key": "route-east-gate-d",
+      "waypoints": [
+        "node-plaza-east",
+        "node-corridor-east",
+        "node-gate-d-queue",
+        "node-gate-d",
+        "node-concourse-north"
+      ],
+      "protected": false,
+      "required_assets": []
+    },
+    {
+      "stable_key": "route-transit-gate-b",
+      "waypoints": [
+        "node-arrival-transit-red",
+        "node-corridor-west",
+        "node-gate-b-queue",
+        "node-gate-b",
+        "node-concourse-west"
+      ],
+      "protected": false,
+      "required_assets": []
+    },
+    {
+      "stable_key": "route-mobility-protected",
+      "waypoints": [
+        "node-plaza-west",
+        "node-corridor-west",
+        "node-gate-a-queue",
+        "node-gate-a",
+        "node-concourse-north",
+        "node-concourse-west",
+        "node-sections-100"
+      ],
+      "protected": true,
+      "required_assets": []
+    },
+    {
+      "stable_key": "route-lift-dependent",
+      "waypoints": [
+        "node-concourse-east",
+        "node-sections-200"
+      ],
+      "protected": false,
+      "required_assets": [
+        "asset-lift-d2"
+      ]
+    }
+  ]
+}

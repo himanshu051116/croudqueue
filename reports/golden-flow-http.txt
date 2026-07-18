@@ -1,0 +1,80 @@
+{
+  "approval_bundle_hash": "716b705f1361b3c661d03062d36e5b18bbe1477eda3e316e37ca975f44630ba4",
+  "audit_chain_valid": true,
+  "audit_event_types": [
+    "RUN_CREATED",
+    "CANDIDATE_SELECTED",
+    "GUIDANCE_VERIFICATION_STARTED",
+    "DEMO_FAULT_INJECTED",
+    "SEMANTIC_BLOCKED",
+    "TARGETED_REPAIR_COMPLETED",
+    "SIMULATION_COMPLETED",
+    "APPROVAL_RECORDED",
+    "PUBLICATION_COMPLETED"
+  ],
+  "base_url": "http://127.0.0.1:8001",
+  "blocked_diagnostic_codes": [
+    "PROTECTED_COHORT_OMITTED"
+  ],
+  "final_state": "PUBLISHED",
+  "generation_provenance": {
+    "attempt_count": 0,
+    "fault_code": "DEMO_ES_FAN_APP_PROTECTION_OMISSION",
+    "fault_injection": true,
+    "latency_ms": 0,
+    "model": "gemini-3.5-flash",
+    "provider": "deterministic_fallback",
+    "request_count": 0,
+    "request_id_hash": null,
+    "safe_error_code": "NOT_CONFIGURED",
+    "successful_request_count": 0
+  },
+  "publication_delivery_count": 10,
+  "publication_surfaces": [
+    "FAN_APP",
+    "PA",
+    "SIGNAGE",
+    "VOLUNTEER_DEVICE"
+  ],
+  "run_id": "19e5365a-706a-40c4-8f7a-72524887df48",
+  "selected_candidate": "cand-west-gate-a",
+  "session_id": "4846475c-154f-45cb-b9f4-e3cf34b38ea1",
+  "simulation": {
+    "baseline": {
+      "clearance_time_minutes": 24.71,
+      "maximum_queue": 221.54,
+      "overload_frequency": 0.895,
+      "unfinished_demand": 144.88
+    },
+    "explanation": "The targeted diversion reduces queue pressure without protected-route violations under the synthetic paired sample set.",
+    "failure_frequency": 0.035,
+    "intervention": {
+      "clearance_time_minutes": 16.86,
+      "maximum_queue": 30.03,
+      "overload_frequency": 0.015,
+      "unfinished_demand": 4.71
+    },
+    "paired": true,
+    "protected_route_violations": 0,
+    "result_hash": "3a11594ba8b9ebe78beaf66b8c274b2ebb0804f2f500868d98ac5fc2cdde6e75",
+    "sample_count": 200,
+    "sample_set_id": "gate_convergence:cand-west-gate-a:seed-20260718:n-200",
+    "samples_hash": "b52cc3b34894784b08961c4ace47327bbea86471f265e9fd661141ac7136ebad",
+    "seed": 20260718,
+    "trace_summary": {
+      "baseline_queue_p95": 322.73,
+      "intervention_queue_p95": 113.56
+    },
+    "verdict": "PASS",
+    "wilson_95_lower": 0.017055324637357105,
+    "wilson_95_upper": 0.07047146086668134
+  },
+  "targeted_repair": {
+    "new_version": 2,
+    "other_variant_hash_count": 5,
+    "repaired_channel": "fan_app",
+    "repaired_language": "es",
+    "unaffected_spanish_clauses_unchanged": true
+  },
+  "verified": true
+}

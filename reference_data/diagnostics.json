@@ -1,0 +1,70 @@
+{
+  "diagnostics": [
+    {
+      "code": "ROUTE_WAYPOINT_OMISSION",
+      "severity": "BLOCK",
+      "stage": "SEMANTIC_EQUIVALENCE",
+      "message": "A required route waypoint is omitted in the translated text."
+    },
+    {
+      "code": "UNAUTHORIZED_DESTINATION_ADDITION",
+      "severity": "BLOCK",
+      "stage": "SEMANTIC_EQUIVALENCE",
+      "message": "An unauthorized destination was added to the text variant."
+    },
+    {
+      "code": "AUDIENCE_SCOPE_CONTRACTION",
+      "severity": "BLOCK",
+      "stage": "SEMANTIC_EQUIVALENCE",
+      "message": "Target audience scope is contracted or narrowed in generated output."
+    },
+    {
+      "code": "DESTINATION_DRIFT",
+      "severity": "BLOCK",
+      "stage": "SEMANTIC_EQUIVALENCE",
+      "message": "Target destination was altered or misstated."
+    },
+    {
+      "code": "UNAUTHORIZED_WAITING_INSTRUCTION",
+      "severity": "BLOCK",
+      "stage": "SEMANTIC_EQUIVALENCE",
+      "message": "Generated text injected an unauthorized delay/waiting instruction."
+    },
+    {
+      "code": "NEGATION_INVERSION",
+      "severity": "BLOCK",
+      "stage": "SEMANTIC_EQUIVALENCE",
+      "message": "Action directive has been negated or inverted."
+    },
+    {
+      "code": "UNAUTHORIZED_CLOSURE_CLAIM",
+      "severity": "BLOCK",
+      "stage": "SEMANTIC_EQUIVALENCE",
+      "message": "Generated text contains an unauthorized closure claim."
+    },
+    {
+      "code": "UNAUTHORIZED_NUMERIC_CLAIM",
+      "severity": "BLOCK",
+      "stage": "SEMANTIC_EQUIVALENCE",
+      "message": "Generated text contains unauthorized wait time or numerical claims."
+    },
+    {
+      "code": "VALIDITY_OMISSION",
+      "severity": "BLOCK",
+      "stage": "SEMANTIC_EQUIVALENCE",
+      "message": "Validity window clause has been omitted or misstated."
+    },
+    {
+      "code": "ACTIVE_INSTRUCTION_COLLISION",
+      "severity": "BLOCK",
+      "stage": "COLLISION",
+      "message": "Authoritative GIR details conflict with active guidance."
+    },
+    {
+      "code": "SYSTEM_CONFIGURATION_ERROR",
+      "severity": "BLOCK",
+      "stage": "SCHEMA",
+      "message": "Critical fallback parsing or template configurations failed."
+    }
+  ]
+}

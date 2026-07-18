@@ -1,0 +1,8 @@
+== isort ==
+== black ==
+All done! ✨ 🍰 ✨
+63 files would be left unchanged.
+== flake8 ==
+backend/app/persistence/models/venue.py:3:1: F401 'typing.Any' imported but unused
+== mypy ==
+Success: no issues found in 44 source files

@@ -1,0 +1,42 @@
+{
+  "intervention_policies": [
+    {
+      "policy_name": "Gate Redirection Policy",
+      "target_scenario": "gate_convergence",
+      "rules": [
+        {
+          "objective": "RELIEVE_GATE_CONGESTION",
+          "origin_nodes": ["node-arrival-west", "node-arrival-transit"],
+          "redirect_routes": ["route-west-gate-a", "route-west-gate-b"],
+          "audience_scope": "sections-100-200"
+        }
+      ]
+    },
+    {
+      "policy_name": "Transit Flow Management Policy",
+      "target_scenario": "transit_burst",
+      "rules": [
+        {
+          "objective": "MANAGE_SURGE_FLOW",
+          "origin_nodes": ["node-arrival-transit"],
+          "preferred_gate": "node-gate-b",
+          "alternate_gate": "node-gate-a",
+          "audience_scope": "sections-100-200"
+        }
+      ]
+    },
+    {
+      "policy_name": "Mobility Alternate Access Policy",
+      "target_scenario": "lift_outage",
+      "rules": [
+        {
+          "objective": "RESTORE_ACCESSIBILITY_PATHWAY",
+          "affected_asset": "asset-lift-d2",
+          "origin_nodes": ["node-concourse-west"],
+          "mobility_alternate_route": "route-mobility-protected",
+          "audience_scope": "mobility-assistance-cohort"
+        }
+      ]
+    }
+  ]
+}

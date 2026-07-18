@@ -1,0 +1,83 @@
+{
+  "version": "2.0.0",
+  "languages": {
+    "en": {
+      "sections_prefix": "Sections",
+      "approach": {
+        "node-plaza-west": "West Plaza"
+      },
+      "destinations": {
+        "node-gate-a": "Gate A",
+        "node-gate-b": "Gate B",
+        "node-gate-c": "Gate C",
+        "node-gate-d": "Gate D"
+      },
+      "action": {
+        "REDIRECT": "redirect"
+      },
+      "strength": {
+        "RECOMMENDED": "should",
+        "MANDATORY": "must",
+        "INFO": "may"
+      },
+      "audience_template": "{sections} approaching from {approach} {strength} {action} to {destination}.",
+      "route_template": "Use the controlled route {route}.",
+      "fallback_template": "All other guests must continue to their assigned entry; if this route is unavailable, redirect to {fallback_destination}.",
+      "protection_template": "Mobility-assistance guests must remain on the designated accessible route and must not use Lift D2.",
+      "validity_template": "Effective {effective} until {expiry}.",
+      "explanation": "This is a targeted synthetic crowd-flow intervention."
+    },
+    "es": {
+      "sections_prefix": "Secciones",
+      "approach": {
+        "node-plaza-west": "Plaza Oeste"
+      },
+      "destinations": {
+        "node-gate-a": "Puerta A",
+        "node-gate-b": "Puerta B",
+        "node-gate-c": "Puerta C",
+        "node-gate-d": "Puerta D"
+      },
+      "action": {
+        "REDIRECT": "redirigirse"
+      },
+      "strength": {
+        "RECOMMENDED": "deben",
+        "MANDATORY": "deben obligatoriamente",
+        "INFO": "pueden"
+      },
+      "audience_template": "{sections} que se aproximan desde {approach} {strength} {action} a {destination}.",
+      "route_template": "Utilicen la ruta controlada {route}.",
+      "fallback_template": "Todos los demás visitantes deben continuar hacia su acceso asignado; si esta ruta no está disponible, deben dirigirse a {fallback_destination}.",
+      "protection_template": "Los visitantes con asistencia de movilidad deben permanecer en la ruta accesible designada y no deben utilizar el ascensor D2.",
+      "validity_template": "Vigente desde {effective} hasta {expiry}.",
+      "explanation": "Esta es una intervención sintética y dirigida de flujo de público."
+    },
+    "fr": {
+      "sections_prefix": "Sections",
+      "approach": {
+        "node-plaza-west": "Place Ouest"
+      },
+      "destinations": {
+        "node-gate-a": "Porte A",
+        "node-gate-b": "Porte B",
+        "node-gate-c": "Porte C",
+        "node-gate-d": "Porte D"
+      },
+      "action": {
+        "REDIRECT": "se rediriger"
+      },
+      "strength": {
+        "RECOMMENDED": "doivent",
+        "MANDATORY": "doivent impérativement",
+        "INFO": "peuvent"
+      },
+      "audience_template": "{sections} arrivant depuis {approach} {strength} {action} vers {destination}.",
+      "route_template": "Utilisez l’itinéraire contrôlé {route}.",
+      "fallback_template": "Tous les autres visiteurs doivent continuer vers leur entrée attribuée ; si cet itinéraire est indisponible, ils doivent se diriger vers {fallback_destination}.",
+      "protection_template": "Les visiteurs ayant besoin d’une assistance à la mobilité doivent rester sur l’itinéraire accessible désigné et ne doivent pas utiliser l’ascenseur D2.",
+      "validity_template": "Valable du {effective} au {expiry}.",
+      "explanation": "Il s’agit d’une intervention synthétique et ciblée sur les flux de public."
+    }
+  }
+}

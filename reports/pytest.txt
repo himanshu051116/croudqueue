@@ -1,0 +1,114 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /mnt/data/crowdcue_work/crowdcue/.venv-linux/bin/python
+cachedir: .pytest_cache
+rootdir: /mnt/data/crowdcue_work/crowdcue/backend
+configfile: pytest.ini
+plugins: anyio-4.14.2, cov-7.1.0, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 57 items
+
+backend/tests/test_audit.py::test_audit_hash_chain_creation PASSED       [  1%]
+backend/tests/test_audit.py::test_audit_sequence_constraint PASSED       [  3%]
+backend/tests/test_config.py::test_settings_valid_model PASSED           [  5%]
+backend/tests/test_config.py::test_settings_invalid_model PASSED         [  7%]
+backend/tests/test_config.py::test_settings_cors_no_wildcard_with_credentials PASSED [  8%]
+backend/tests/test_config.py::test_production_rejects_demo_fault_injection PASSED [ 10%]
+backend/tests/test_contracts.py::test_reference_data_seed_is_idempotent PASSED [ 12%]
+backend/tests/test_contracts.py::test_topology_keys_are_unique_per_venue_not_globally PASSED [ 14%]
+backend/tests/test_contracts.py::test_create_run_persists_authoritative_inputs_and_candidates PASSED [ 15%]
+backend/tests/test_contracts.py::test_selected_candidate_creates_immutable_gir_version PASSED [ 17%]
+backend/tests/test_contracts.py::test_audit_chain_and_outbox_are_written_together PASSED [ 19%]
+backend/tests/test_contracts.py::test_idempotency_primary_key_rejects_duplicate PASSED [ 21%]
+backend/tests/test_contracts.py::test_guidance_storage_is_normalized_by_language_channel_and_version PASSED [ 22%]
+backend/tests/test_contracts.py::test_reference_version_hash_is_immutable PASSED [ 24%]
+backend/tests/test_gemini_client.py::test_gemini_interactions_request_and_structured_response PASSED [ 26%]
+backend/tests/test_gemini_client.py::test_gemini_retries_429_then_succeeds PASSED [ 28%]
+backend/tests/test_gemini_client.py::test_gemini_invalid_json_is_rejected PASSED [ 29%]
+backend/tests/test_gemini_client.py::test_gemini_requires_configured_key PASSED [ 31%]
+backend/tests/test_gemini_client.py::test_gemini_network_error_is_normalized PASSED [ 33%]
+backend/tests/test_gemini_client.py::test_gemini_rejects_non_json_api_response PASSED [ 35%]
+backend/tests/test_golden_flow.py::test_fallback_creates_exact_six_semantically_equivalent_variants PASSED [ 36%]
+backend/tests/test_golden_flow.py::test_demo_fault_is_detected_and_targeted_repair_isolated PASSED [ 38%]
+backend/tests/test_golden_flow.py::test_targeted_repair_rejects_wrong_variant PASSED [ 40%]
+backend/tests/test_golden_flow.py::test_paired_simulation_is_reproducible_and_protected_route_blocks PASSED [ 42%]
+backend/tests/test_golden_flow.py::test_state_graph_supports_clean_and_repair_branches PASSED [ 43%]
+backend/tests/test_golden_flow.py::test_full_persistent_golden_flow PASSED [ 45%]
+backend/tests/test_golden_flow.py::test_session_ownership_is_enforced PASSED [ 47%]
+backend/tests/test_golden_flow.py::test_run_audit_uses_the_complete_session_chain PASSED [ 49%]
+backend/tests/test_golden_flow.py::test_semantic_mutations_are_blocked[audience_action-Sections 114\u2013116 approaching from West Plaza should redirect to Gate A.-AUDIENCE_SCOPE_MISMATCH] PASSED [ 50%]
+backend/tests/test_golden_flow.py::test_semantic_mutations_are_blocked[route_clause-Use the controlled route node-plaza-west node-gate-d.-ROUTE_DRIFT] PASSED [ 52%]
+backend/tests/test_golden_flow.py::test_semantic_mutations_are_blocked[optional_explanation-Proceed to Gate D.-UNAUTHORIZED_DESTINATION_ADDED] PASSED [ 54%]
+backend/tests/test_golden_flow.py::test_semantic_mutations_are_blocked[optional_explanation-Gate D is closed.-UNAUTHORIZED_CLOSURE_CLAIM] PASSED [ 56%]
+backend/tests/test_golden_flow.py::test_semantic_mutations_are_blocked[optional_explanation-Wait at Gate A.-UNAUTHORIZED_WAITING_INSTRUCTION] PASSED [ 57%]
+backend/tests/test_golden_flow.py::test_semantic_mutations_are_blocked[optional_explanation-Expected compliance is 80%.-UNSUPPORTED_NUMERIC_CLAIM] PASSED [ 59%]
+backend/tests/test_golden_flow.py::test_semantic_mutations_are_blocked[optional_explanation-Do not use Gate A.-NEGATION_INVERSION] PASSED [ 61%]
+backend/tests/test_hardening.py::test_generic_candidate_engine_accepts_new_configuration PASSED [ 63%]
+backend/tests/test_hardening.py::test_snapshot_and_candidate_output_are_reproducible PASSED [ 64%]
+backend/tests/test_hardening.py::test_compatibility_evaluate_and_session_ownership PASSED [ 66%]
+backend/tests/test_hardening.py::test_api_error_statuses PASSED          [ 68%]
+backend/tests/test_health.py::test_health_live PASSED                    [ 70%]
+backend/tests/test_health.py::test_health_ready PASSED                   [ 71%]
+backend/tests/test_health_failures.py::test_health_live_always_200 PASSED [ 73%]
+backend/tests/test_health_failures.py::test_health_ready_db_failure PASSED [ 75%]
+backend/tests/test_health_failures.py::test_health_ready_redis_failure PASSED [ 77%]
+backend/tests/test_models.py::test_optimistic_concurrency_preflight_run PASSED [ 78%]
+backend/tests/test_outbox.py::test_atomic_outbox_insertion PASSED        [ 80%]
+backend/tests/test_outbox.py::test_idempotency_key_uniqueness PASSED     [ 82%]
+backend/tests/test_outbox.py::test_outbox_atomic_rollback PASSED         [ 84%]
+backend/tests/test_outbox.py::test_outbox_event_claiming_lifecycle PASSED [ 85%]
+backend/tests/test_venue.py::test_valid_topology_contains_complete_aurora_contract PASSED [ 87%]
+backend/tests/test_venue.py::test_invalid_edge_reference_fails_without_mutating_frozen_models PASSED [ 89%]
+backend/tests/test_venue.py::test_invalid_route_waypoint_fails PASSED    [ 91%]
+backend/tests/test_venue.py::test_discontinuous_route_is_rejected PASSED [ 92%]
+backend/tests/test_venue.py::test_scenario_vetoes[gate_convergence-viable0-rejection_codes0] PASSED [ 94%]
+backend/tests/test_venue.py::test_scenario_vetoes[transit_burst-viable1-rejection_codes1] PASSED [ 96%]
+backend/tests/test_venue.py::test_scenario_vetoes[lift_outage-viable2-rejection_codes2] PASSED [ 98%]
+backend/tests/test_venue.py::test_candidate_ordering_is_deterministic PASSED [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.5-final-0 ________________
+
+Name                                                 Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------------------------------------------------
+backend/app/__init__.py                                  0      0      0      0   100%
+backend/app/api/capabilities.py                         12      2      0      0    83%   19-20
+backend/app/api/health.py                               34      4      6      3    78%   41-42, 48->53, 49, 60
+backend/app/api/runs.py                                 71      8     10      2    85%   51, 60-65, 74-76, 78
+backend/app/api/venue.py                                50     13      0      0    74%   44-47, 55-56, 80-82, 97-100
+backend/app/config.py                                   71      8     18      7    83%   57, 65, 72, 78, 79->81, 82, 89-90, 94
+backend/app/database.py                                 25      3      4      2    83%   18, 25, 48
+backend/app/domain/candidate.py                         74      7     30      4    89%   69-76, 78-85, 105, 138->137
+backend/app/domain/diagnostics.py                       29      0      0      0   100%
+backend/app/domain/gir.py                               64      4     10      4    89%   76, 79, 81, 83
+backend/app/domain/guidance.py                          53      5      2      0    87%   66-76
+backend/app/domain/simulation.py                        31      0      0      0   100%
+backend/app/domain/snapshot.py                          15      0      0      0   100%
+backend/app/domain/venue.py                             78      4     26      4    92%   76, 89, 99, 105
+backend/app/domain/workflow.py                          20      0      0      0   100%
+backend/app/logging.py                                  27      3     14      2    78%   23-25, 39->43
+backend/app/main.py                                     24      2      0      0    92%   21, 45
+backend/app/persistence/models/__init__.py               5      0      0      0   100%
+backend/app/persistence/models/audit.py                 19      0      0      0   100%
+backend/app/persistence/models/run.py                  264      0      0      0   100%
+backend/app/persistence/models/venue.py                 57      0      0      0   100%
+backend/app/persistence/types.py                         4      0      0      0   100%
+backend/app/runtime.py                                   6      6      2      0     0%   1-11
+backend/app/services/audit_service.py                   45      4     12      4    86%   57, 95, 97, 106
+backend/app/services/golden_flow_service.py            375    131     90     13    58%   93, 130, 136, 153, 270, 275->277, 348, 350, 404, 472, 496, 555->563, 591, 598-600, 607-608, 625, 645-664, 666-678, 688-692, 712, 727, 729-730, 732-752, 765-768, 783, 805-807, 814-818, 825-827, 834-837, 848-851, 858-860, 909-910, 912, 928, 930-932, 934-947, 962, 974-975, 979-981, 985-991, 998, 1005-1008, 1010-1049, 1070, 1097-1098, 1108-1111, 1122, 1129-1132, 1139, 1145, 1152, 1156, 1230-1234, 1257-1259
+backend/app/services/guidance/__init__.py                2      0      0      0   100%
+backend/app/services/guidance/fallback_renderer.py      19      0      6      1    96%   25->27
+backend/app/services/guidance/gemini_client.py          96     16     36     10    76%   53-54, 60, 67, 69->68, 74-76, 78, 108, 122-128, 136, 147, 170-176
+backend/app/services/guidance/reverse_compiler.py       49      4      4      2    89%   24, 27, 34-35
+backend/app/services/guidance/semantic_analyser.py      33      1     20      2    94%   125, 137->139
+backend/app/services/guidance/service.py               115     18     24      4    80%   118-124, 158-168, 200-201, 208->236, 210, 259
+backend/app/services/guidance/targeted_repair.py        11      0      2      0   100%
+backend/app/services/guidance/terminology.py            28      0      2      0   100%
+backend/app/services/integrity.py                       33      1     14      1    96%   19
+backend/app/services/outbox_dispatcher.py               29      3      2      0    90%   66-76
+backend/app/services/reference_data_service.py          36      0     14      0   100%
+backend/app/services/simulation_service.py              77      6     16      4    89%   29, 52, 149-150, 152-153
+backend/app/services/venue_service.py                   82      3     22      3    94%   25, 173, 209->208, 211
+------------------------------------------------------------------------------------------------
+TOTAL                                                 2063    256    386     72    84%
+Coverage XML written to file reports/coverage.xml
+============================== 57 passed in 5.39s ==============================

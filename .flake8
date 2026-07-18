@@ -1,0 +1,6 @@
+[flake8]
+max-line-length = 88
+extend-ignore = E203,W503,E501
+exclude = .git,.venv,.venv-linux,node_modules,dist,__pycache__,backend/alembic/versions
+per-file-ignores =
+    backend/tests/conftest.py:E402

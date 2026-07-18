@@ -1,0 +1,198 @@
+{
+  "scenarios": [
+    {
+      "key": "gate_convergence",
+      "name": "Gate C Ingress Convergence",
+      "description": "Gate C queues are projected to overflow, threatening corridor flow constraints.",
+      "venue_state_modifications": {
+        "nodes": {
+          "node-gate-c": {
+            "pressure": 0.98
+          }
+        }
+      },
+      "default_intent": {
+        "objective": "RELIEVE_GATE_CONGESTION",
+        "target": "node-gate-c",
+        "affected_audience": "east-arrival-flows",
+        "constraints": {
+          "gate_pressure_limit": 0.9
+        },
+        "excluded_cohorts": []
+      },
+      "candidate_policy": {
+        "rules": [
+          "ROUTE_CONTINUITY",
+          "CLOSED_EDGE",
+          "UNAVAILABLE_ASSET",
+          "PROTECTED_ROUTE",
+          "CLOSED_DESTINATION"
+        ],
+        "candidates": [
+          {
+            "candidate_key": "cand-west-gate-a",
+            "title": "Redirect West Flow to Gate A",
+            "destination_key": "node-gate-a",
+            "route_key": "route-west-gate-a",
+            "cohort_id": "general-cohort",
+            "audience_sections": [
+              "114",
+              "115",
+              "116",
+              "117"
+            ],
+            "approach_zones": [
+              "node-plaza-west"
+            ],
+            "directive_action": "REDIRECT",
+            "directive_strength": "RECOMMENDED",
+            "fallback_destination_key": "node-gate-b",
+            "fallback_action": "REDIRECT",
+            "excluded_cohorts": [
+              "mobility-assistance-cohort"
+            ],
+            "protected_route_keys": [
+              "route-mobility-protected"
+            ],
+            "validity_minutes": 10
+          },
+          {
+            "candidate_key": "cand-west-gate-b",
+            "title": "Redirect West Flow to Gate B",
+            "destination_key": "node-gate-b",
+            "route_key": "route-west-gate-b",
+            "cohort_id": "general-cohort"
+          },
+          {
+            "candidate_key": "cand-mobility-protected-a",
+            "title": "Reserve Protected Path on Gate A",
+            "destination_key": "node-gate-a",
+            "route_key": "route-mobility-protected",
+            "cohort_id": "mobility-assistance-cohort"
+          },
+          {
+            "candidate_key": "cand-east-gate-c",
+            "title": "Direct East Flow to Gate C",
+            "destination_key": "node-gate-c",
+            "route_key": "route-east-gate-c",
+            "cohort_id": "general-cohort"
+          }
+        ],
+        "version": "v1.1.0"
+      }
+    },
+    {
+      "key": "transit_burst",
+      "name": "Transit Hub Surge Burst",
+      "description": "Transit Hub arrival rate rises due to a delayed train, causing surge flows.",
+      "venue_state_modifications": {
+        "edges": {
+          "edge-transit-red-to-corr-west": {
+            "is_active": true
+          }
+        }
+      },
+      "default_intent": {
+        "objective": "MANAGE_SURGE_FLOW",
+        "target": "node-arrival-transit-red",
+        "affected_audience": "transit-red-flows",
+        "constraints": {},
+        "excluded_cohorts": []
+      },
+      "candidate_policy": {
+        "rules": [
+          "ROUTE_CONTINUITY",
+          "CLOSED_EDGE",
+          "UNAVAILABLE_ASSET",
+          "PROTECTED_ROUTE",
+          "CLOSED_DESTINATION"
+        ],
+        "candidates": [
+          {
+            "candidate_key": "cand-transit-gate-b",
+            "title": "Direct Transit Burst to Gate B",
+            "destination_key": "node-gate-b",
+            "route_key": "route-transit-gate-b",
+            "cohort_id": "general-cohort"
+          },
+          {
+            "candidate_key": "cand-transit-mobility",
+            "title": "Reserve Gate A Protected Route",
+            "destination_key": "node-gate-a",
+            "route_key": "route-mobility-protected",
+            "cohort_id": "mobility-assistance-cohort"
+          },
+          {
+            "candidate_key": "cand-transit-closed-edge",
+            "title": "Direct Flow via Transit Corridor (Fallback)",
+            "destination_key": "node-gate-b",
+            "route_key": "route-transit-gate-b",
+            "cohort_id": "general-cohort",
+            "active_edges_override": {
+              "edge-transit-red-to-corr-west": false
+            }
+          }
+        ],
+        "version": "v1.1.0"
+      }
+    },
+    {
+      "key": "lift_outage",
+      "name": "Lift D2 Concourse Outage",
+      "description": "Access lift D2 fails. Mobility-assistance guests require alternate pathways.",
+      "venue_state_modifications": {
+        "assets": {
+          "asset-lift-d2": {
+            "status": "OFFLINE"
+          }
+        }
+      },
+      "default_intent": {
+        "objective": "RESTORE_ACCESSIBILITY_PATHWAY",
+        "target": "node-sections-200",
+        "affected_audience": "mobility-assistance-cohort",
+        "constraints": {
+          "asset_offline": [
+            "asset-lift-d2"
+          ]
+        },
+        "excluded_cohorts": [
+          "general-cohort"
+        ]
+      },
+      "candidate_policy": {
+        "rules": [
+          "ROUTE_CONTINUITY",
+          "CLOSED_EDGE",
+          "UNAVAILABLE_ASSET",
+          "PROTECTED_ROUTE",
+          "CLOSED_DESTINATION"
+        ],
+        "candidates": [
+          {
+            "candidate_key": "cand-lift-outage-mobility-fail",
+            "title": "Direct Mobility Cohort via Lift D2 Route",
+            "destination_key": "node-sections-200",
+            "route_key": "route-lift-dependent",
+            "cohort_id": "mobility-assistance-cohort"
+          },
+          {
+            "candidate_key": "cand-lift-outage-mobility-ok",
+            "title": "Redirect Mobility Cohort to Lower Tier",
+            "destination_key": "node-sections-100",
+            "route_key": "route-mobility-protected",
+            "cohort_id": "mobility-assistance-cohort"
+          },
+          {
+            "candidate_key": "cand-lift-outage-general-fail",
+            "title": "Redirect General Cohort via Protected Path",
+            "destination_key": "node-sections-100",
+            "route_key": "route-mobility-protected",
+            "cohort_id": "general-cohort"
+          }
+        ],
+        "version": "v1.1.0"
+      }
+    }
+  ]
+}

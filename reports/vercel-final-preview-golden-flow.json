@@ -1,0 +1,94 @@
+﻿{
+    "verified":  true,
+    "deployment":  "https://croudcue-qw1cmq3zf-himanshusubh1510-3246s-projects.vercel.app",
+    "iterations":  1,
+    "fixed_seed_reproducible":  true,
+    "runs":  [
+                 {
+                     "iteration":  1,
+                     "run_id":  "b986b9eb-0678-4e96-b458-1bba5e9c71c9",
+                     "session_id":  "af0a4b5c-c3ab-40e9-9923-20313bd2cce1",
+                     "final_state":  "PUBLISHED",
+                     "selected_candidate":  "cand-west-gate-a",
+                     "rejected_candidate":  "cand-east-gate-c",
+                     "blocked_diagnostic_codes":  [
+                                                      "PROTECTED_COHORT_OMITTED"
+                                                  ],
+                     "blocked_spanish_version":  1,
+                     "repaired_spanish_version":  2,
+                     "original_variant_id":  "3f94196c-e54e-48e1-9bf1-acbdcc911be2",
+                     "repaired_variant_id":  "5ca87b39-0a47-4001-9bbd-df7754b23a5a",
+                     "unaffected_variant_hash_count":  5,
+                     "unaffected_spanish_clauses_unchanged":  true,
+                     "generation_provenance":  {
+                                                   "model":  "gemini-3.5-flash",
+                                                   "provider":  "deterministic_fallback",
+                                                   "fault_code":  "DEMO_ES_FAN_APP_PROTECTION_OMISSION",
+                                                   "latency_ms":  0,
+                                                   "attempt_count":  0,
+                                                   "request_count":  0,
+                                                   "fault_injection":  true,
+                                                   "request_id_hash":  null,
+                                                   "safe_error_code":  "NOT_CONFIGURED",
+                                                   "successful_request_count":  0
+                                               },
+                     "simulation":  {
+                                        "policy_version":  "2.1.0",
+                                        "sample_set_id":  "gate_convergence:cand-west-gate-a:seed-20260718:n-200:policy-2.1.0",
+                                        "seed":  20260718,
+                                        "sample_count":  200,
+                                        "paired":  true,
+                                        "baseline":  {
+                                                         "maximum_queue":  221.54,
+                                                         "overload_frequency":  0.895,
+                                                         "unfinished_demand":  144.88,
+                                                         "clearance_time_minutes":  24.71
+                                                     },
+                                        "intervention":  {
+                                                             "maximum_queue":  30.03,
+                                                             "overload_frequency":  0.015,
+                                                             "unfinished_demand":  4.71,
+                                                             "clearance_time_minutes":  16.86
+                                                         },
+                                        "protected_route_violations":  0,
+                                        "failure_frequency":  0.035,
+                                        "wilson_95_lower":  0.017055324637357105,
+                                        "wilson_95_upper":  0.07047146086668134,
+                                        "verdict":  "PASS",
+                                        "explanation":  "The intervention reduces queue pressure without protected-route violations under the synthetic paired sample set.",
+                                        "samples_hash":  "99784762a704b04b5768fe1953b3f4c3dd3a1949eee53a0fed2601666f5101be",
+                                        "result_hash":  "fa44f8ff2ee2c2dc55bef28a05ee6a38188ea27dc73d5e783557498c56a8f17c",
+                                        "trace_summary":  {
+                                                              "baseline_queue_p95":  322.73,
+                                                              "intervention_queue_p95":  113.56
+                                                          }
+                                    },
+                     "simulation_duration_ms":  10568,
+                     "approval_bundle_hash":  "d30fb7d94bb8067a6a9c59814da247af3ab0c8f7005522e70064991f52ff87e9",
+                     "stale_approval_status":  409,
+                     "blocked_approval_status":  409,
+                     "publication_simulated":  true,
+                     "publication_delivery_count":  10,
+                     "publication_surfaces":  [
+                                                  "FAN_APP",
+                                                  "PA",
+                                                  "SIGNAGE",
+                                                  "VOLUNTEER_DEVICE"
+                                              ],
+                     "audit_chain_valid":  true,
+                     "audit_event_types":  [
+                                               "RUN_CREATED",
+                                               "CANDIDATE_SELECTED",
+                                               "GUIDANCE_VERIFICATION_STARTED",
+                                               "DEMO_FAULT_INJECTED",
+                                               "SEMANTIC_BLOCKED",
+                                               "TARGETED_REPAIR_COMPLETED",
+                                               "SIMULATION_COMPLETED",
+                                               "APPROVAL_RECORDED",
+                                               "PUBLICATION_COMPLETED"
+                                           ],
+                     "refresh_restored":  true
+                 }
+             ],
+    "verified_at_utc":  "2026-07-18T20:40:00.1129480Z"
+}

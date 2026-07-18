@@ -1,0 +1,329 @@
+{
+  "venue_name": "Stadium-Alpha-Synthetic",
+  "ref_version": "v2.0.0",
+  "nodes": [
+    {
+      "stable_key": "node-plaza-north",
+      "name": "North Plaza",
+      "node_type": "arrival",
+      "capacity": 5000,
+      "x": 300.0,
+      "y": 30.0
+    },
+    {
+      "stable_key": "node-plaza-west",
+      "name": "West Plaza",
+      "node_type": "arrival",
+      "capacity": 5000,
+      "x": 50.0,
+      "y": 200.0
+    },
+    {
+      "stable_key": "node-plaza-east",
+      "name": "East Plaza",
+      "node_type": "arrival",
+      "capacity": 5000,
+      "x": 550.0,
+      "y": 200.0
+    },
+    {
+      "stable_key": "node-arrival-transit-red",
+      "name": "Transit Red",
+      "node_type": "arrival",
+      "capacity": 4000,
+      "x": 80.0,
+      "y": 320.0
+    },
+    {
+      "stable_key": "node-arrival-shuttle-blue",
+      "name": "Shuttle Blue",
+      "node_type": "arrival",
+      "capacity": 3000,
+      "x": 520.0,
+      "y": 320.0
+    },
+    {
+      "stable_key": "node-corridor-west",
+      "name": "West Corridor",
+      "node_type": "corridor",
+      "capacity": 2000,
+      "x": 140.0,
+      "y": 200.0
+    },
+    {
+      "stable_key": "node-corridor-east",
+      "name": "East Corridor",
+      "node_type": "corridor",
+      "capacity": 2000,
+      "x": 460.0,
+      "y": 200.0
+    },
+    {
+      "stable_key": "node-gate-a-queue",
+      "name": "Gate A Queue",
+      "node_type": "queue",
+      "capacity": 1500,
+      "x": 180.0,
+      "y": 110.0
+    },
+    {
+      "stable_key": "node-gate-a",
+      "name": "Gate A",
+      "node_type": "gate",
+      "capacity": 1000,
+      "x": 230.0,
+      "y": 90.0
+    },
+    {
+      "stable_key": "node-gate-b-queue",
+      "name": "Gate B Queue",
+      "node_type": "queue",
+      "capacity": 1500,
+      "x": 180.0,
+      "y": 290.0
+    },
+    {
+      "stable_key": "node-gate-b",
+      "name": "Gate B",
+      "node_type": "gate",
+      "capacity": 1000,
+      "x": 230.0,
+      "y": 310.0
+    },
+    {
+      "stable_key": "node-gate-c-queue",
+      "name": "Gate C Queue",
+      "node_type": "queue",
+      "capacity": 1500,
+      "x": 420.0,
+      "y": 290.0
+    },
+    {
+      "stable_key": "node-gate-c",
+      "name": "Gate C",
+      "node_type": "gate",
+      "capacity": 1000,
+      "x": 370.0,
+      "y": 310.0
+    },
+    {
+      "stable_key": "node-gate-d-queue",
+      "name": "Gate D Queue",
+      "node_type": "queue",
+      "capacity": 1500,
+      "x": 420.0,
+      "y": 110.0
+    },
+    {
+      "stable_key": "node-gate-d",
+      "name": "Gate D",
+      "node_type": "gate",
+      "capacity": 1000,
+      "x": 370.0,
+      "y": 90.0
+    },
+    {
+      "stable_key": "node-concourse-north",
+      "name": "North Concourse",
+      "node_type": "concourse",
+      "capacity": 3000,
+      "x": 300.0,
+      "y": 120.0
+    },
+    {
+      "stable_key": "node-concourse-west",
+      "name": "West Concourse",
+      "node_type": "concourse",
+      "capacity": 3000,
+      "x": 260.0,
+      "y": 200.0
+    },
+    {
+      "stable_key": "node-concourse-east",
+      "name": "East Concourse",
+      "node_type": "concourse",
+      "capacity": 3000,
+      "x": 340.0,
+      "y": 200.0
+    },
+    {
+      "stable_key": "node-sections-100",
+      "name": "Lower Tier 100",
+      "node_type": "section",
+      "capacity": 4000,
+      "x": 300.0,
+      "y": 160.0
+    },
+    {
+      "stable_key": "node-sections-200",
+      "name": "Upper Tier 200",
+      "node_type": "section",
+      "capacity": 6000,
+      "x": 300.0,
+      "y": 240.0
+    }
+  ],
+  "edges": [
+    {
+      "stable_key": "edge-west-plaza-to-corr-west",
+      "source_key": "node-plaza-west",
+      "target_key": "node-corridor-west",
+      "capacity": 2000,
+      "travel_time_seconds": 60
+    },
+    {
+      "stable_key": "edge-transit-red-to-corr-west",
+      "source_key": "node-arrival-transit-red",
+      "target_key": "node-corridor-west",
+      "capacity": 1500,
+      "travel_time_seconds": 45
+    },
+    {
+      "stable_key": "edge-east-plaza-to-corr-east",
+      "source_key": "node-plaza-east",
+      "target_key": "node-corridor-east",
+      "capacity": 2000,
+      "travel_time_seconds": 60
+    },
+    {
+      "stable_key": "edge-shuttle-blue-to-corr-east",
+      "source_key": "node-arrival-shuttle-blue",
+      "target_key": "node-corridor-east",
+      "capacity": 1500,
+      "travel_time_seconds": 45
+    },
+    {
+      "stable_key": "edge-corr-west-to-gate-a-q",
+      "source_key": "node-corridor-west",
+      "target_key": "node-gate-a-queue",
+      "capacity": 1200,
+      "travel_time_seconds": 30
+    },
+    {
+      "stable_key": "edge-gate-a-q-to-gate-a",
+      "source_key": "node-gate-a-queue",
+      "target_key": "node-gate-a",
+      "capacity": 1000,
+      "travel_time_seconds": 15
+    },
+    {
+      "stable_key": "edge-corr-west-to-gate-b-q",
+      "source_key": "node-corridor-west",
+      "target_key": "node-gate-b-queue",
+      "capacity": 1200,
+      "travel_time_seconds": 30
+    },
+    {
+      "stable_key": "edge-gate-b-q-to-gate-b",
+      "source_key": "node-gate-b-queue",
+      "target_key": "node-gate-b",
+      "capacity": 1000,
+      "travel_time_seconds": 15
+    },
+    {
+      "stable_key": "edge-corr-east-to-gate-c-q",
+      "source_key": "node-corridor-east",
+      "target_key": "node-gate-c-queue",
+      "capacity": 1200,
+      "travel_time_seconds": 30
+    },
+    {
+      "stable_key": "edge-gate-c-q-to-gate-c",
+      "source_key": "node-gate-c-queue",
+      "target_key": "node-gate-c",
+      "capacity": 1000,
+      "travel_time_seconds": 15
+    },
+    {
+      "stable_key": "edge-corr-east-to-gate-d-q",
+      "source_key": "node-corridor-east",
+      "target_key": "node-gate-d-queue",
+      "capacity": 1200,
+      "travel_time_seconds": 30
+    },
+    {
+      "stable_key": "edge-gate-d-q-to-gate-d",
+      "source_key": "node-gate-d-queue",
+      "target_key": "node-gate-d",
+      "capacity": 1000,
+      "travel_time_seconds": 15
+    },
+    {
+      "stable_key": "edge-gate-a-to-conc-north",
+      "source_key": "node-gate-a",
+      "target_key": "node-concourse-north",
+      "capacity": 1500,
+      "travel_time_seconds": 45
+    },
+    {
+      "stable_key": "edge-gate-b-to-conc-west",
+      "source_key": "node-gate-b",
+      "target_key": "node-concourse-west",
+      "capacity": 1500,
+      "travel_time_seconds": 45
+    },
+    {
+      "stable_key": "edge-gate-c-to-conc-east",
+      "source_key": "node-gate-c",
+      "target_key": "node-concourse-east",
+      "capacity": 1500,
+      "travel_time_seconds": 45
+    },
+    {
+      "stable_key": "edge-gate-d-to-conc-north",
+      "source_key": "node-gate-d",
+      "target_key": "node-concourse-north",
+      "capacity": 1500,
+      "travel_time_seconds": 45
+    },
+    {
+      "stable_key": "edge-conc-north-to-conc-west",
+      "source_key": "node-concourse-north",
+      "target_key": "node-concourse-west",
+      "capacity": 2000,
+      "travel_time_seconds": 30
+    },
+    {
+      "stable_key": "edge-conc-north-to-conc-east",
+      "source_key": "node-concourse-north",
+      "target_key": "node-concourse-east",
+      "capacity": 2000,
+      "travel_time_seconds": 30
+    },
+    {
+      "stable_key": "edge-conc-west-to-sections-100",
+      "source_key": "node-concourse-west",
+      "target_key": "node-sections-100",
+      "capacity": 2000,
+      "travel_time_seconds": 60
+    },
+    {
+      "stable_key": "edge-conc-east-to-sections-100",
+      "source_key": "node-concourse-east",
+      "target_key": "node-sections-100",
+      "capacity": 2000,
+      "travel_time_seconds": 60
+    },
+    {
+      "stable_key": "edge-conc-west-to-sections-200",
+      "source_key": "node-concourse-west",
+      "target_key": "node-sections-200",
+      "capacity": 1000,
+      "travel_time_seconds": 90
+    },
+    {
+      "stable_key": "edge-conc-east-to-sections-200",
+      "source_key": "node-concourse-east",
+      "target_key": "node-sections-200",
+      "capacity": 1000,
+      "travel_time_seconds": 90
+    }
+  ],
+  "assets": [
+    {
+      "stable_key": "asset-lift-d2",
+      "asset_type": "LIFT",
+      "status": "OPERATIONAL"
+    }
+  ]
+}

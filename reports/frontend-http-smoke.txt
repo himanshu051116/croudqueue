@@ -1,0 +1,8 @@
+frontend_http_status:
+200
+proxy_capabilities_status:
+200
+index_title:
+<title>CrowdCue 2.0 - Stadium Decision Support</title>
+capabilities:
+{"supported_languages":["en","es","fr"],"generated_channels":["fan_app","pa"],"publication_surfaces":["FAN_APP","PA","SIGNAGE","VOLUNTEER_DEVICE"],"scenarios":[{"key":"gate_convergence","name":"Gate C Ingress Convergence","description":"Gate C queues are projected to overflow, threatening corridor flow constraints."},{"key":"transit_burst","name":"Transit Hub Surge Burst","description":"Transit Hub arrival rate rises due to a delayed train, causing surge flows."},{"key":"lift_outage","name":"Lift D2 Concourse Outage","description":"Access lift D2 fails. Mobility-assistance guests require alternate pathways."}],"controlled_actions":["REDIRECT","CONTINUE","HOLD","AVOID"],"gemini":{"model":"gemini-3.5-flash","configured":false,"server_side_only":true},"demo_fault_injection_enabled":true,"synthetic_prototype":true}
