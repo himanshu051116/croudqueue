@@ -136,7 +136,9 @@ class TestReadModelResponseStructure:
     ) -> None:
         """Ensure snapshot_details returns exact expected structure."""
         from backend.app.persistence.models.run import PreflightRun as RunModel
-        from backend.app.persistence.models.run import VenueStateSnapshot as SnapshotModel
+        from backend.app.persistence.models.run import (
+            VenueStateSnapshot as SnapshotModel,
+        )
 
         session_id = uuid4()
         created = await GoldenFlowService.create_run(
@@ -253,12 +255,18 @@ class TestReadModelOrderingInvariants:
             if item["candidate_key"] == "cand-west-gate-a"
         )
         await GoldenFlowService.select_candidate(
-            db_session, run_id=run_id, session_id=session_id, candidate_id=candidate["id"]
+            db_session,
+            run_id=run_id,
+            session_id=session_id,
+            candidate_id=candidate["id"],
         )
 
         # Generate guidance
         generated1 = await GoldenFlowService.generate_guidance(
-            db_session, run_id=run_id, session_id=session_id, enable_fault_injection=False
+            db_session,
+            run_id=run_id,
+            session_id=session_id,
+            enable_fault_injection=False,
         )
 
         # Get details
@@ -328,11 +336,17 @@ class TestReadModelOrderingInvariants:
             if item["candidate_key"] == "cand-west-gate-a"
         )
         await GoldenFlowService.select_candidate(
-            db_session, run_id=run_id, session_id=session_id, candidate_id=candidate["id"]
+            db_session,
+            run_id=run_id,
+            session_id=session_id,
+            candidate_id=candidate["id"],
         )
 
         await GoldenFlowService.generate_guidance(
-            db_session, run_id=run_id, session_id=session_id, enable_fault_injection=False
+            db_session,
+            run_id=run_id,
+            session_id=session_id,
+            enable_fault_injection=False,
         )
 
         await GoldenFlowService.simulate(
@@ -435,11 +449,17 @@ class TestReadModelHashContracts:
             if item["candidate_key"] == "cand-west-gate-a"
         )
         await GoldenFlowService.select_candidate(
-            db_session, run_id=run_id, session_id=session_id, candidate_id=candidate["id"]
+            db_session,
+            run_id=run_id,
+            session_id=session_id,
+            candidate_id=candidate["id"],
         )
 
         await GoldenFlowService.generate_guidance(
-            db_session, run_id=run_id, session_id=session_id, enable_fault_injection=False
+            db_session,
+            run_id=run_id,
+            session_id=session_id,
+            enable_fault_injection=False,
         )
 
         details1 = await GoldenFlowService.details(

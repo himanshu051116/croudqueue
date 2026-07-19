@@ -46,7 +46,7 @@ class TestEventLoopConfiguration:
     @pytest.mark.asyncio
     async def test_selector_event_loop_supports_basic_async_operations(self) -> None:
         """Verify selector event loop runs basic async operations."""
-        
+
         async def simple_coroutine() -> str:
             return "success"
 
