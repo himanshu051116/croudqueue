@@ -1,23 +1,26 @@
 from __future__ import annotations
 
-from typing import Any
 from uuid import UUID
-
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from backend.app.services.audit_service import AuditService
 from backend.app.services.golden_flow.approval_workflow import ApprovalWorkflow
 from backend.app.services.golden_flow.common import OwnershipError, RunNotFoundError
 from backend.app.services.golden_flow.read_queries import ReadQueries
 from backend.app.services.golden_flow.read_serializers import ReadSerializers
+from backend.app.services.golden_flow.read_types import (
+    AuditEventView,
+    GoldenFlowDetailsResponse,
+    SnapshotView,
+)
 from backend.app.services.golden_flow.run_workflow import RunWorkflow
+from sqlalchemy.ext.asyncio import AsyncSession
 
 
 class ReadModel:
     @classmethod
     async def details(
         cls, db: AsyncSession, *, run_id: UUID, session_id: UUID
-    ) -> dict[str, Any]:
+    ) -> GoldenFlowDetailsResponse:
         run, snapshot = await RunWorkflow._owned_run(db, run_id, session_id)
         candidates = await ReadQueries.run_candidates(db, run_id)
         rejections = await ReadQueries.rejections_by_candidate(db, candidates)
@@ -51,7 +54,7 @@ class ReadModel:
     @staticmethod
     async def snapshot_details(
         db: AsyncSession, *, snapshot_id: UUID, session_id: UUID
-    ) -> dict[str, Any]:
+    ) -> SnapshotView:
         snapshot = await ReadQueries.snapshot_by_id(db, snapshot_id)
         if snapshot is None:
             raise RunNotFoundError("Snapshot not found.")
@@ -62,7 +65,7 @@ class ReadModel:
     @classmethod
     async def audit_timeline(
         cls, db: AsyncSession, *, run_id: UUID, session_id: UUID
-    ) -> dict[str, Any]:
+    ) -> dict[str, UUID | str | int | bool | list[AuditEventView]]:
         await RunWorkflow._owned_run(db, run_id, session_id)
         session_events = await ReadQueries.audit_events_for_session(db, session_id)
         events = [item for item in session_events if item.run_id == run_id]

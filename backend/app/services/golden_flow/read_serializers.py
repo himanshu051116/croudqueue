@@ -7,37 +7,45 @@ Deterministic output for deterministic input.
 
 from __future__ import annotations
 
-from typing import Any
+from typing import cast
 from uuid import UUID
 
 from backend.app.persistence.models.audit import AuditEventModel
 from backend.app.persistence.models.run import (
     ApprovalRecordModel,
-)
-from backend.app.persistence.models.run import (
-    CandidateRejection as CandidateRejectionModel,
-)
-from backend.app.persistence.models.run import (
     DiagnosticModel,
     GenerationRun,
     GIRVersionModel,
     GuidanceVariantModel,
-)
-from backend.app.persistence.models.run import InterventionCandidate as CandidateModel
-from backend.app.persistence.models.run import PreflightRun as RunModel
-from backend.app.persistence.models.run import (
     PublicationBatchModel,
     PublicationDeliveryModel,
     SimulationRunModel,
 )
+from backend.app.persistence.models.run import (
+    CandidateRejection as CandidateRejectionModel,
+)
+from backend.app.persistence.models.run import InterventionCandidate as CandidateModel
+from backend.app.persistence.models.run import PreflightRun as RunModel
 from backend.app.persistence.models.run import VenueStateSnapshot as SnapshotModel
+from backend.app.services.golden_flow.read_types import (
+    ApprovalView,
+    AuditEventView,
+    CandidateView,
+    DiagnosticView,
+    GoldenFlowDetailsResponse,
+    GuidanceVariantView,
+    PublicationBatchView,
+    PublicationDeliveryView,
+    RejectionView,
+    SnapshotView,
+)
 
 
 class ReadSerializers:
     """Pure transformation functions for serializing run data to API responses."""
 
     @staticmethod
-    def serialize_rejection(item: CandidateRejectionModel) -> dict[str, Any]:
+    def serialize_rejection(item: CandidateRejectionModel) -> RejectionView:
         """Serialize a candidate rejection."""
         return {
             "reason_code": item.reason_code,
@@ -52,7 +60,7 @@ class ReadSerializers:
         cls,
         candidates: list[CandidateModel],
         rejections: dict[UUID, list[CandidateRejectionModel]],
-    ) -> list[dict[str, Any]]:
+    ) -> list[CandidateView]:
         """Serialize intervention candidates with their rejections."""
         return [
             {
@@ -76,7 +84,7 @@ class ReadSerializers:
     @staticmethod
     def serialize_variants(
         variants: list[GuidanceVariantModel],
-    ) -> list[dict[str, Any]]:
+    ) -> list[GuidanceVariantView]:
         """Serialize guidance variants."""
         return [
             {
@@ -99,7 +107,7 @@ class ReadSerializers:
     @staticmethod
     def serialize_diagnostics(
         diagnostics: list[DiagnosticModel],
-    ) -> list[dict[str, Any]]:
+    ) -> list[DiagnosticView]:
         """Serialize generation diagnostics."""
         return [
             {
@@ -118,37 +126,43 @@ class ReadSerializers:
     @staticmethod
     def serialize_approval(
         approval: ApprovalRecordModel | None,
-    ) -> dict[str, Any] | None:
+    ) -> ApprovalView | None:
         """Serialize an approval record."""
         if approval is None:
             return None
-        return {
-            "approved_by_user_id": approval.approved_by_user_id,
-            "approver_role": approval.approver_role,
-            "run_version": approval.run_version,
-            "bundle_hash": approval.bundle_hash,
-            "approval_note": approval.notes,
-            "approved_at": approval.approved_at,
-        }
+        return cast(
+            ApprovalView,
+            {
+                "approved_by_user_id": approval.approved_by_user_id,
+                "approver_role": approval.approver_role,
+                "run_version": approval.run_version,
+                "bundle_hash": approval.bundle_hash,
+                "approval_note": approval.notes,
+                "approved_at": approval.approved_at,
+            },
+        )
 
     @staticmethod
     def serialize_publication_batch(
         batch: PublicationBatchModel | None,
-    ) -> dict[str, Any] | None:
+    ) -> PublicationBatchView | None:
         """Serialize a publication batch."""
         if batch is None:
             return None
-        return {
-            "id": batch.id,
-            "status": batch.status,
-            "started_at": batch.started_at,
-            "completed_at": batch.completed_at,
-        }
+        return cast(
+            PublicationBatchView,
+            {
+                "id": batch.id,
+                "status": batch.status,
+                "started_at": batch.started_at,
+                "completed_at": batch.completed_at,
+            },
+        )
 
     @staticmethod
     def serialize_publication_deliveries(
         deliveries: list[PublicationDeliveryModel],
-    ) -> list[dict[str, Any]]:
+    ) -> list[PublicationDeliveryView]:
         """Serialize publication deliveries."""
         return [
             {
@@ -179,7 +193,7 @@ class ReadSerializers:
         publication_batch: PublicationBatchModel | None,
         publication_deliveries: list[PublicationDeliveryModel],
         expected_hash: str | None,
-    ) -> dict[str, Any]:
+    ) -> GoldenFlowDetailsResponse:
         """Serialize complete run details response."""
         return {
             "run_id": run.id,
@@ -205,7 +219,7 @@ class ReadSerializers:
         }
 
     @staticmethod
-    def serialize_snapshot(snapshot: SnapshotModel) -> dict[str, Any]:
+    def serialize_snapshot(snapshot: SnapshotModel) -> SnapshotView:
         """Serialize a venue state snapshot."""
         return {
             "id": snapshot.id,
@@ -221,7 +235,7 @@ class ReadSerializers:
         }
 
     @staticmethod
-    def serialize_audit_event(item: AuditEventModel) -> dict[str, Any]:
+    def serialize_audit_event(item: AuditEventModel) -> AuditEventView:
         """Serialize an audit event."""
         return {
             "id": item.id,
